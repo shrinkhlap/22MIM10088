@@ -1,1 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>NotifyApp Dashboard</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', sans-serif; background: #0f172a; color: #e2e8f0; }
+    header {
+      background: #1e293b; border-bottom: 1px solid #334155;
+      padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center;
+    }
+    header h1 { font-size: 1.2rem; }
+    header button { background: #ef4444; color: white; border: none;
+      padding: 0.4rem 1rem; border-radius: 6px; cursor: pointer; }
+    .container { max-width: 700px; margin: 2rem auto; padding: 0 1rem; }
+    .send-box { background: #1e293b; border: 1px solid #334155;
+      border-radius: 12px; padding: 1.5rem; margin-bottom: 2rem; }
+    .send-box h2 { margin-bottom: 1rem; font-size: 1rem; color: #94a3b8; }
+    input, select {
+      width: 100%; padding: 0.6rem 0.9rem; background: #0f172a;
+      border: 1px solid #334155; border-radius: 8px; color: #e2e8f0;
+      font-size: 0.9rem; margin-bottom: 0.8rem; outline: none;
+    }
+    .btn { padding: 0.6rem 1.4rem; border: none; border-radius: 8px;
+      cursor: pointer; font-weight: 600; font-size: 0.9rem; }
+    .btn-primary { background: #6366f1; color: white; }
+    .btn-primary:hover { background: #4f46e5; }
+    .notif-card {
+      background: #1e293b; border: 1px solid #334155; border-radius: 10px;
+      padding: 1rem 1.2rem; margin-bottom: 0.8rem;
+      display: flex; justify-content: space-between; align-items: flex-start;
+    }
+    .notif-card.unread { border-left: 3px solid #6366f1; }
+    .notif-card h3 { font-size: 0.95rem; margin-bottom: 0.3rem; }
+    .notif-card p  { font-size: 0.85rem; color: #94a3b8; }
+    .badge {
+      font-size: 0.72rem; padding: 0.2rem 0.5rem; border-radius: 999px; font-weight: 600;
+    }
+    .badge.info    { background: #1e40af; color: #93c5fd; }
+    .badge.success { background: #064e3b; color: #6ee7b7; }
+    .badge.warning { background: #78350f; color: #fcd34d; }
+    .badge.error   { background: #450a0a; color: #fca5a5; }
+    .read-btn { font-size: 0.75rem; color: #6366f1; cursor: pointer;
+      background: none; border: none; margin-top: 0.5rem; }
+    .empty { text-align: center; color: #475569; padding: 2rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>NotifyApp <span id="userLabel" style="color:#6366f1;font-size:0.9rem;"></span></h1>
+    <button onclick="logout()">Logout</button>
+  </header>
 
+  <div class="container">
+    <div class="send-box">
+      <h2>Send a Notification</h2>
+      <input id="title" placeholder="Title" />
+      <input id="message" placeholder="Message" />
+      <select id="type">
+        <option value="info">Info</option>
+        <option value="success">Success</option>
+        <option value="warning">Warning</option>
+        <option value="error">Error</option>
+      </select>
+      <button class="btn btn-primary" onclick="sendNotif()">Send</button>
+    </div>
+
+    <div id="notifications"><p class="empty">Loading notifications...</p></div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
